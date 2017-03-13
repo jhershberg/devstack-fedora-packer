@@ -10,7 +10,7 @@ Do `sudo dnf install -y virt-manager` to install and `sudo virt-manager` to laun
 
 Right-click on the "QEMU/KVM User session" (header!) for "Details" and on the "Virtual Networks" tab click [+] Add; name it e.g. "devstack-packer" and [X] "Enable IPv4 network address space definition", default Network: 192.168.100.0/24 is fine, also keep default [X] "Enable DHCP v4" (192.168.100.128 - 192.168.100.254), but NOT the [ ] "Enable Static Route Definition".  Next Step 4/4 choose (*) "Forwarding to physical network" instead of the default "( ) Isolated virtual network", so default Destination: "Any physical device" and Mode: "NAT".
 
-Now "Create a new virtual machine" using the the Virtual Machine Manager UI (launched as root), and "Import existing disk image" devstack-fedora-packer/fedora-qemu/fedora24 (built above), choosing OS type: "Linux", Version: "Fedora 23" (or 24 if virt-manager has it); Memory 2048 MB, CPUs: 2; Network selection: devstack-packer (created above).
+Now "Create a new virtual machine" using the the Virtual Machine Manager UI (launched as root), and "Import existing disk image" devstack-fedora-packer/fedora-qemu/fedora24 (built above), choosing OS type: "Linux", Version: "Fedora 23" (or 24 if virt-manager has it); Memory 4096 MB or more (e.g. just 2 GB is definitely not enough), CPUs: 2; Network selection: devstack-packer (created above).
 
 Start this VM, and login to it on the Virt Viewer console as ds / ds.  Do a `ping 8.8.8.8` to make sure it can reach the outside network.  Do a `ifconfig` to see its IP it got from DHCP on the 192.168.100.0/24 network (e.g. 192.168.100.211).  Now e.g. `ssh ds@192.168.100.211` and do `cd devstack; ./stack.sh`
 
