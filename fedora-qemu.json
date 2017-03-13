@@ -1,0 +1,41 @@
+{
+    "builders": [
+        {
+            "accelerator": "kvm",
+            "boot_command": [
+                "<tab> linux text biosdevname=0 ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks-fedora24.cfg<enter><enter>"
+            ],
+            "boot_wait": "5s",
+            "disk_interface": "virtio",
+            "disk_size": 20000,
+            "format": "qcow2",
+            "headless": false,
+            "http_directory": "./http",
+            "iso_checksum": "712011463c432f387a0d6a57aa133957",
+            "iso_checksum_type": "md5",
+            "iso_url": "file:///home/jhershbe/Downloads/Fedora-Server-dvd-x86_64-24/Fedora-Server-dvd-x86_64-24-1.2.iso",
+            "net_device": "virtio-net",
+            "output_directory": "fedora-qemu",
+            "shutdown_command": "sudo shutdown now",
+            "ssh_host_port_max": 2229,
+            "ssh_host_port_min": 2222,
+            "ssh_password": "ds",
+            "ssh_port": 22,
+            "ssh_username": "ds",
+            "ssh_wait_timeout": "1200s",
+            "type": "qemu",
+            "vm_name": "fedora24"
+        }
+    ],
+    "provisioners": [
+        {
+            "script": "devstack-setup.sh",
+            "type": "shell"
+        },
+        {
+            "type": "file",
+            "source": "local.conf",
+            "destination": "/home/ds/devstack/local.conf"
+        }
+    ]
+}
