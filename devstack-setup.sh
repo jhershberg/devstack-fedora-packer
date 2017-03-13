@@ -9,4 +9,3 @@ sudo systemctl stop firewalld
 sudo systemctl disable firewalld
 git clone https://github.com/openstack-dev/devstack.git
 git checkout stable/newton
-
