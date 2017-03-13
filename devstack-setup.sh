@@ -1,6 +1,6 @@
 sudo hostnamectl set-hostname control
 sudo dnf update -y vim-minimal
-sudo dnf install -y python git vim
+sudo dnf install -y nano python git vim
 sudo mkdir /opt/stack
 sudo chmod 777 /opt/stack
 sudo mkdir -p /opt/logs/stack
