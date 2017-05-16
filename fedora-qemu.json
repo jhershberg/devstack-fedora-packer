@@ -24,7 +24,8 @@
             "ssh_username": "ds",
             "ssh_wait_timeout": "1200s",
             "type": "qemu",
-            "vm_name": "fedora24"
+            "vm_name": "fedora24",
+            "headless": "true"
         }
     ],
     "provisioners": [
