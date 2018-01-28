@@ -7,8 +7,8 @@ then
 fi
 
 image_loc=./$name/$name.qcow
-sudo mv fedora-qemu $name
-sudo mv $name/fedora24 $image_loc
+sudo mv fedora-devstack $name
+sudo mv $name/fedora-devstack $image_loc
 sudo chmod 777 $image_loc
 
 xml_file=./$name/$name.xml
